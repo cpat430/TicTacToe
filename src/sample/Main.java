@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    final static Helper _helper = new Helper();
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("Scenes/MainMenu.fxml"));
@@ -15,6 +17,10 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.setResizable(false);
         primaryStage.show();
+    }
+
+    public static Helper getHelper() {
+        return _helper;
     }
 
 
