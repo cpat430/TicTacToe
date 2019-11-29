@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Computer implements Initializable {
+public class Player implements Initializable {
 
     Helper _helper = Main.getHelper();
 

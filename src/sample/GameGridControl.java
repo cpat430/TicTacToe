@@ -34,8 +34,4 @@ public class GameGridControl {
 
         return output;
     }
-
-//    public static int getPlayer() {
-//        return _player;
-//    }
 }
