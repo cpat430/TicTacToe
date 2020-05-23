@@ -33,47 +33,47 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="topLeft" mnemonicParsing="false" onAction="#topLeftPress" prefHeight="141.0" prefWidth="320.0" text=" ">
+                  <Button fx:id="topLeft" mnemonicParsing="false" onAction="#buttonPress" prefHeight="141.0" prefWidth="320.0" text=" ">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </Button>
-                  <Button fx:id="topMiddle" mnemonicParsing="false" onAction="#topMiddlePress" prefHeight="210.0" prefWidth="320.0" text=" " GridPane.columnIndex="1">
+                  <Button fx:id="topMiddle" mnemonicParsing="false" onAction="#buttonPress" prefHeight="210.0" prefWidth="320.0" text=" " GridPane.columnIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </Button>
-                  <Button fx:id="left" mnemonicParsing="false" onAction="#leftPress" prefHeight="167.0" prefWidth="233.0" text=" " GridPane.rowIndex="1">
+                  <Button fx:id="left" mnemonicParsing="false" onAction="#buttonPress" prefHeight="167.0" prefWidth="233.0" text=" " GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bottomLeft" mnemonicParsing="false" onAction="#bottomLeftPress" prefHeight="152.0" prefWidth="284.0" text=" " GridPane.rowIndex="2">
+                  <Button fx:id="bottomLeft" mnemonicParsing="false" onAction="#buttonPress" prefHeight="152.0" prefWidth="284.0" text=" " GridPane.rowIndex="2">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </Button>
-                  <Button fx:id="middle" mnemonicParsing="false" onAction="#middlePress" prefHeight="244.0" prefWidth="385.0" text=" " GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="middle" mnemonicParsing="false" onAction="#buttonPress" prefHeight="244.0" prefWidth="385.0" text=" " GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bottomMiddle" mnemonicParsing="false" onAction="#bottomMiddlePress" prefHeight="118.0" prefWidth="215.0" text=" " GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button fx:id="bottomMiddle" mnemonicParsing="false" onAction="#buttonPress" prefHeight="118.0" prefWidth="215.0" text=" " GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </Button>
-                  <Button fx:id="topRight" mnemonicParsing="false" onAction="#topRightPress" prefHeight="253.0" prefWidth="317.0" text=" " GridPane.columnIndex="2">
+                  <Button fx:id="topRight" mnemonicParsing="false" onAction="#buttonPress" prefHeight="253.0" prefWidth="317.0" text=" " GridPane.columnIndex="2">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </Button>
-                  <Button fx:id="right" mnemonicParsing="false" onAction="#rightPress" prefHeight="149.0" prefWidth="288.0" text=" " GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <Button fx:id="right" mnemonicParsing="false" onAction="#buttonPress" prefHeight="149.0" prefWidth="288.0" text=" " GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </Button>
-                  <Button fx:id="bottomRight" mnemonicParsing="false" onAction="#bottomRightPress" prefHeight="127.0" prefWidth="227.0" text=" " GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Button fx:id="bottomRight" mnemonicParsing="false" onAction="#buttonPress" prefHeight="127.0" prefWidth="227.0" text=" " GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="40.0" />
                      </font>

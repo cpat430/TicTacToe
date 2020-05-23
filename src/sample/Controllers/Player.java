@@ -21,7 +21,6 @@ public class Player implements Initializable {
     final private String _empty = " ";
 
     private int _currentPlayer = 1;
-    private int _moves = 0;
     private int[] _playerPlusMoves = {};
 
     @FXML private Button topLeft;
@@ -39,68 +38,37 @@ public class Player implements Initializable {
 
     private Button[][] board = new Button[3][3];
 
-    void makeMove(ActionEvent event, Button button, int curPlayer, int curMoves) {
-        _playerPlusMoves = GameGridControl.buttonChange(button, curPlayer, curMoves);
-
-        String player = (curPlayer == 1) ? "X" : "O";
-
-        Result result = _logic.winning(board,player);
-
-        if (result == Result.PLAYER_WIN) {
-            _helper.addAlert(event, "Player " + curPlayer + " wins!");
-        } else if (result == Result.COMPUTER_WIN) {
-            _helper.addAlert(event, "Player " + curPlayer + " wins!");
-        } else if (result == Result.DRAW) {
-            _helper.addAlert(event, "Game ended in a draw");
-        }
-
-        _currentPlayer = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
-    }
+//    void makeMove(ActionEvent event, Button button, int curPlayer) {
+//
+//        String player = (curPlayer == 1) ? "X" : "O";
+//
+//        GameGridControl.playerButtonChange(button, player);
+//
+//        Result result = _logic.winning(board,player);
+//
+//        if (result == Result.PLAYER_WIN || result == Result.COMPUTER_WIN) {
+//            _helper.addAlert(event, "Player " + curPlayer + " wins!");
+//        } else if (result == Result.DRAW) {
+//            _helper.addAlert(event, "Game ended in a draw");
+//        }
+//
+//        _currentPlayer = 3 - curPlayer;
+//    }
 
     @FXML
-    void bottomLeftPress(ActionEvent event) {
-        makeMove(event, bottomLeft, _currentPlayer, _moves);
-    }
+    void buttonPress(ActionEvent event) {
 
-    @FXML
-    void bottomMiddlePress(ActionEvent event) {
-        makeMove(event, bottomMiddle, _currentPlayer, _moves);
-    }
+        // get the information from the event
+        Button button = (Button) event.getSource();
 
-    @FXML
-    void bottomRightPress(ActionEvent event) {
-        makeMove(event, bottomRight, _currentPlayer, _moves);
-    }
+        String player = (_currentPlayer == 1) ? _player1 : _player2;
 
-    @FXML
-    void leftPress(ActionEvent event) {
-        makeMove(event, left, _currentPlayer, _moves);
-    }
+        GameGridControl.playerButtonChange(button, player);
 
-    @FXML
-    void middlePress(ActionEvent event) {
-        makeMove(event, middle, _currentPlayer, _moves);
-    }
+        checkWin(player, event);
 
-    @FXML
-    void rightPress(ActionEvent event) {
-        makeMove(event, right, _currentPlayer, _moves);
-    }
+        _currentPlayer = 3 - _currentPlayer;
 
-    @FXML
-    void topLeftPress(ActionEvent event) {
-        makeMove(event, topLeft, _currentPlayer, _moves);
-    }
-
-    @FXML
-    void topMiddlePress(ActionEvent event) {
-        makeMove(event, topMiddle, _currentPlayer, _moves);
-    }
-
-    @FXML
-    void topRightPress(ActionEvent event) {
-        makeMove(event, topRight, _currentPlayer, _moves);
     }
 
     @FXML
@@ -114,7 +82,6 @@ public class Player implements Initializable {
             }
         }
 
-        _moves = 0;
         _currentPlayer = 1;
     }
 
@@ -138,6 +105,16 @@ public class Player implements Initializable {
 
         this._logic = new ComputerLogic(board);
 
+    }
+
+    public void checkWin(String player, ActionEvent event) {
+        Result result = _logic.winning(board,player);
+
+        if (result == Result.PLAYER_WIN || result == Result.COMPUTER_WIN) {
+            _helper.addAlert(event, "Player " + _currentPlayer + " wins!", "Player.fxml");
+        } else if (result == Result.DRAW) {
+            _helper.addAlert(event, "Game ended in a draw", "Player.fxml");
+        }
     }
 
     public Button[][] getButtons() {

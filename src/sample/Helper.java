@@ -26,7 +26,7 @@ public class Helper {
         window.show();
     }
 
-    public void addAlert(ActionEvent event, String message) {
+    public void addAlert(ActionEvent event, String message, String scene) {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setContentText(message);
 
@@ -41,6 +41,13 @@ public class Helper {
             if (res.equals(returnToMenu)) {
                 try {
                     changeScene(event, "MainMenu.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else if (res.equals(restart)) {
+                // get the board from the scene
+                try {
+                    changeScene(event, scene);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -66,6 +73,4 @@ public class Helper {
             }
         }
     }
-
-
 }

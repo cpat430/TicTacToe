@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import sample.*;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,11 +16,8 @@ public class Computer implements Initializable {
 
     private ComputerLogic _logic;
 
-    private int _player = 1;
+    private String _player = "X";
     final private String _computer = "O";
-    private int _moves = 0;
-
-    private int[] _playerPlusMoves = {};
 
     @FXML private Button topLeft;
     @FXML private Button topMiddle;
@@ -38,49 +34,15 @@ public class Computer implements Initializable {
 
     private Button[][] board = new Button[3][3];
 
-//    @FXML
-//    void bottomLeftPress(ActionEvent event) {
-//        _playerPlusMoves = GameGridControl.buttonChange(bottomLeft, _player, _moves);
-//
-//        _player = _playerPlusMoves[0];
-//        _moves = _playerPlusMoves[1];
-//
-//        String player = (_player == 1) ? "X" : "O";
-//
-//        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
-//            _helper.addAlert(event, "Player " + (3 - _player) + " wins!");
-//        }
-//    }
-//
-//    @FXML
-//    void bottomMiddlePress(ActionEvent event) {
-//        _playerPlusMoves = GameGridControl.buttonChange(bottomMiddle, _player, _moves);
-//
-//        _player = _playerPlusMoves[0];
-//        _moves = _playerPlusMoves[1];
-//
-//        String player = (_player == 1) ? "X" : "O";
-//
-//        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
-//            _helper.addAlert(event, "Player " + (3 - _player) + " wins!");
-//        }
-//    }
-
-
     @FXML
     void buttonPress(ActionEvent event) {
 
         // get the information from the event
         Button button = (Button) event.getSource();
 
-        _playerPlusMoves = GameGridControl.buttonChange(button, _player, _moves);
+        GameGridControl.computerButtonChange(button, _player);
 
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
-
-        String player = (_player == 1) ? "X" : "O";
-
-        checkWin(player, event);
+        checkWin(_player, event);
 
         // play the computer's move
         makeComputerMove(board);
@@ -98,9 +60,6 @@ public class Computer implements Initializable {
                 board[i][j].setDisable(false);
             }
         }
-
-        _moves = 0;
-        _player = 1;
     }
 
     @FXML
@@ -117,8 +76,6 @@ public class Computer implements Initializable {
         int y = bestMove.getCoord().getJ();
 
         board[x][y].setText("O");
-
-        _player = 1;
     }
 
     @Override
@@ -148,11 +105,11 @@ public class Computer implements Initializable {
         Result result = _logic.winning(board,player);
 
         if (result == Result.PLAYER_WIN) {
-            _helper.addAlert(event, "You win!");
+            _helper.addAlert(event, "You win!", "Computer.fxml");
         } else if (result == Result.COMPUTER_WIN) {
-            _helper.addAlert(event, "Computer wins! Try again next time");
+            _helper.addAlert(event, "Computer wins! Try again next time", "Computer.fxml");
         } else if (result == Result.DRAW) {
-            _helper.addAlert(event, "Game ended in a draw");
+            _helper.addAlert(event, "Game ended in a draw", "Computer.fxml");
         }
     }
 
