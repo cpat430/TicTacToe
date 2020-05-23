@@ -7,10 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import sun.plugin.dom.core.CoreConstants;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.Optional;
 
 public class Helper {
@@ -29,9 +32,15 @@ public class Helper {
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
         a.setContentText(message);
 
+        // customise the alert to have a restart button
+        ButtonType restart = new ButtonType("Restart");
+        ButtonType returnToMenu = new ButtonType("Main Menu", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        a.getButtonTypes().setAll(restart, returnToMenu);
+
         Optional<ButtonType> result = a.showAndWait();
         result.ifPresent(res -> {
-            if (res.equals(ButtonType.OK)) {
+            if (res.equals(returnToMenu)) {
                 try {
                     changeScene(event, "MainMenu.fxml");
                 } catch (IOException e) {
@@ -59,4 +68,6 @@ public class Helper {
             }
         }
     }
+
+
 }

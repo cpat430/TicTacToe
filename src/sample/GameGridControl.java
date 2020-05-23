@@ -13,7 +13,7 @@ public class GameGridControl {
 
         int[] output = {player, currentMove};
 
-        if (button.getText().isEmpty()) {
+        if (button.getText().equals(" ")) {
             if (player == 1) {
                 button.setText("X");
             } else {

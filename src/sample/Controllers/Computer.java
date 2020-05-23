@@ -4,9 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import sample.GameGridControl;
-import sample.Helper;
-import sample.Main;
+import sample.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,7 +12,9 @@ import java.util.ResourceBundle;
 
 public class Computer implements Initializable {
 
-    Helper _helper = Main.getHelper();
+    private Helper _helper = Main.getHelper();
+
+    private ComputerLogic _logic;
 
     private int _player = 1;
 
@@ -22,148 +22,78 @@ public class Computer implements Initializable {
 
     private int[] _playerPlusMoves = {};
 
-    @FXML
-    private Button topLeft;
+    @FXML private Button topLeft;
+
+    @FXML private Button topMiddle;
+
+    @FXML private Button left;
+
+    @FXML private Button bottomLeft;
+
+    @FXML private Button middle;
+
+    @FXML private Button bottomMiddle;
+
+    @FXML private Button topRight;
+
+    @FXML private Button right;
+
+    @FXML private Button bottomRight;
+
+    @FXML private Button restartButton;
+
+    @FXML private Button mainMenuButton;
+
+    private Button[][] board = new Button[3][3];
+
+//    @FXML
+//    void bottomLeftPress(ActionEvent event) {
+//        _playerPlusMoves = GameGridControl.buttonChange(bottomLeft, _player, _moves);
+//
+//        _player = _playerPlusMoves[0];
+//        _moves = _playerPlusMoves[1];
+//
+//        String player = (_player == 1) ? "X" : "O";
+//
+//        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
+//            _helper.addAlert(event, "Player " + (3 - _player) + " wins!");
+//        }
+//    }
+//
+//    @FXML
+//    void bottomMiddlePress(ActionEvent event) {
+//        _playerPlusMoves = GameGridControl.buttonChange(bottomMiddle, _player, _moves);
+//
+//        _player = _playerPlusMoves[0];
+//        _moves = _playerPlusMoves[1];
+//
+//        String player = (_player == 1) ? "X" : "O";
+//
+//        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
+//            _helper.addAlert(event, "Player " + (3 - _player) + " wins!");
+//        }
+//    }
+
 
     @FXML
-    private Button topMiddle;
+    void buttonPress(ActionEvent event) {
 
-    @FXML
-    private Button left;
+        // get the information from the event
+        Button button = (Button) event.getSource();
 
-    @FXML
-    private Button bottomLeft;
-
-    @FXML
-    private Button middle;
-
-    @FXML
-    private Button bottomMiddle;
-
-    @FXML
-    private Button topRight;
-
-    @FXML
-    private Button right;
-
-    @FXML
-    private Button bottomRight;
-
-    @FXML
-    private Button restartButton;
-
-    @FXML
-    private Button mainMenuButton;
-
-
-    private Button[][] allButtons = new Button[3][3];
-
-    @FXML
-    void bottomLeftPress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(bottomLeft, _player, _moves);
+        _playerPlusMoves = GameGridControl.buttonChange(button, _player, _moves);
 
         _player = _playerPlusMoves[0];
         _moves = _playerPlusMoves[1];
 
-        if (checkWinner(bottomLeft)) {
+        String player = (_player == 1) ? "X" : "O";
+
+        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
             _helper.addAlert(event, "Player " + (3 - _player) + " wins!");
         }
-    }
 
-    @FXML
-    void bottomMiddlePress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(bottomMiddle, _player, _moves);
-
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
-
-        if (checkWinner(bottomMiddle)) {
-            _helper.addAlert(event, "Player " + (3 - _player) + " wins!");
-        }
-    }
-
-    @FXML
-    void bottomRightPress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(bottomRight, _player, _moves);
-
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
-
-        if (checkWinner(bottomRight)) {
-            _helper.addAlert(event, "Player " + (3 - _player) + " wins!");
-        }
-    }
-
-    @FXML
-    void leftPress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(left, _player, _moves);
-
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
-
-        if (checkWinner(left)) {
-            _helper.addAlert(event, "Player " + (3 - _player) + " wins!");
-        }
-    }
-
-    @FXML
-    void middlePress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(middle, _player, _moves);
-
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
-
-        if (checkWinner(middle)) {
-            _helper.addAlert(event, "Player " + (3 - _player) + " wins!");
-        }
-    }
-
-    @FXML
-    void rightPress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(right, _player, _moves);
-
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
-
-        if (checkWinner(right)) {
-            _helper.addAlert(event, "Player " + (3 - _player) + " wins!");
-        }
-    }
-
-    @FXML
-    void topLeftPress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(topLeft, _player, _moves);
-
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
-
-        if (checkWinner(topLeft)) {
-            _helper.addAlert(event, "Player " + (3 - _player) + " wins!");
-        }
-    }
-
-    @FXML
-    void topMiddlePress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(topMiddle, _player, _moves);
-
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
-
-        if (checkWinner(topMiddle)) {
-            _helper.addAlert(event, "Player " + (3 - _player) + " wins!");
-        }
-    }
-
-    @FXML
-    void topRightPress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(topRight, _player, _moves);
-
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
-
-        if (checkWinner(topRight)) {
-            _helper.addAlert(event, "Player " + (3 - _player) + " wins!");
-        }
+        // play the computer's move
+        makeComputerMove(board);
     }
 
     @FXML
@@ -172,8 +102,8 @@ public class Computer implements Initializable {
         // reset all the buttons
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                allButtons[i][j].setText("");
-                allButtons[i][j].setDisable(false);
+                board[i][j].setText(" ");
+                board[i][j].setDisable(false);
             }
         }
 
@@ -186,71 +116,46 @@ public class Computer implements Initializable {
         _helper.changeScene(event, "MainMenu.fxml");
     }
 
-    private boolean checkWinner(Button button) {
+    private void makeComputerMove(Button[][] board) {
+        // calculate the best move
+        Move bestMove = _logic.calculateBestMove(board, "O");
 
-        int x = 0,y = 0;
-        boolean winner = false;
+        // get the x and y coordinates
+        int x = bestMove.getCoord().getI();
+        int y = bestMove.getCoord().getJ();
 
-        // find index of input button
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (allButtons[i][j] == button) {
-                    x = i;
-                    y = j;
-                    break;
-                }
-            }
-        }
+        board[x][y].setText("O");
 
-        // check all those in line of the button inputted.
+        _player = 1;
 
-        if (_moves > 4) {
-            // vertical
-            if ((allButtons[x][0].getText() == allButtons[x][1].getText()) && (allButtons[x][1].getText() == allButtons[x][2].getText())) {
-                winner = true;
-            }
-
-            // horizontal
-            if ((allButtons[0][y].getText() == allButtons[1][y].getText()) && (allButtons[1][y].getText() == allButtons[2][y].getText())) {
-                winner = true;
-            }
-
-            // diagonal - check both directions
-            if ((x + y) % 2 == 0) {
-                if ((allButtons[0][0].getText() == allButtons[1][1].getText()) && (allButtons[1][1].getText() == allButtons[2][2].getText())) {
-                    winner = true;
-                }
-
-                if ((allButtons[0][2].getText() == allButtons[1][1].getText()) && (allButtons[1][1].getText() == allButtons[2][0].getText())) {
-                    winner = true;
-                }
-            }
-        }
-
-        if (winner) {
-            _helper.disableButtons(allButtons, true);
-        }
-
-        return winner;
+//        return board;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        allButtons[0][0] = topLeft;
-        allButtons[0][1] = topMiddle;
-        allButtons[0][2] = topRight;
-        allButtons[1][0] = left;
-        allButtons[1][1] = middle;
-        allButtons[1][2] = right;
-        allButtons[2][0] = bottomLeft;
-        allButtons[2][1] = bottomMiddle;
-        allButtons[2][2] = bottomRight;
+        board[0][0] = topLeft;
+        board[0][1] = topMiddle;
+        board[0][2] = topRight;
+        board[1][0] = left;
+        board[1][1] = middle;
+        board[1][2] = right;
+        board[2][0] = bottomLeft;
+        board[2][1] = bottomMiddle;
+        board[2][2] = bottomRight;
+
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
+                board[i][j].setText(" ");
+            }
+        }
+
+        this._logic = new ComputerLogic(board);
 
     }
 
     public Button[][] getButtons() {
-        return allButtons;
+        return board;
     }
 
 }
