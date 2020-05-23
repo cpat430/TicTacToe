@@ -103,6 +103,12 @@ public class Player implements Initializable {
         board[2][1] = bottomMiddle;
         board[2][2] = bottomRight;
 
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board.length; j++) {
+                board[i][j].setText(" ");
+            }
+        }
+
         this._logic = new ComputerLogic(board);
 
     }

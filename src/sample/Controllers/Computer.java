@@ -98,7 +98,6 @@ public class Computer implements Initializable {
         }
 
         this._logic = new ComputerLogic(board);
-
     }
 
     public void checkWin(String player, ActionEvent event) {
