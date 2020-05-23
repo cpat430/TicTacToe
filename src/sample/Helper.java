@@ -10,10 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-import sun.plugin.dom.core.CoreConstants;
 
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.Optional;
 
 public class Helper {

@@ -16,181 +16,91 @@ public class Player implements Initializable {
 
     private ComputerLogic _logic;
 
-    private int _player = 1;
+    final private String _player1 = "X";
+    final private String _player2 = "O";
+    final private String _empty = " ";
 
+    private int _currentPlayer = 1;
     private int _moves = 0;
-
     private int[] _playerPlusMoves = {};
 
-    @FXML
-    private Button topLeft;
+    @FXML private Button topLeft;
+    @FXML private Button topMiddle;
+    @FXML private Button left;
+    @FXML private Button bottomLeft;
+    @FXML private Button middle;
+    @FXML private Button bottomMiddle;
+    @FXML private Button topRight;
+    @FXML private Button right;
+    @FXML private Button bottomRight;
 
-    @FXML
-    private Button topMiddle;
-
-    @FXML
-    private Button left;
-
-    @FXML
-    private Button bottomLeft;
-
-    @FXML
-    private Button middle;
-
-    @FXML
-    private Button bottomMiddle;
-
-    @FXML
-    private Button topRight;
-
-    @FXML
-    private Button right;
-
-    @FXML
-    private Button bottomRight;
-
-    @FXML
-    private Button restartButton;
-
-    @FXML
-    private Button mainMenuButton;
-
+    @FXML private Button restartButton;
+    @FXML private Button mainMenuButton;
 
     private Button[][] board = new Button[3][3];
 
-    @FXML
-    void bottomLeftPress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(bottomLeft, _player, _moves);
+    void makeMove(ActionEvent event, Button button, int curPlayer, int curMoves) {
+        _playerPlusMoves = GameGridControl.buttonChange(button, curPlayer, curMoves);
 
-        String player = (_player == 1) ? "X" : "O";
+        String player = (curPlayer == 1) ? "X" : "O";
 
-        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
-            _helper.addAlert(event, "Player " + _player + " wins!");
+        Result result = _logic.winning(board,player);
+
+        if (result == Result.PLAYER_WIN) {
+            _helper.addAlert(event, "Player " + curPlayer + " wins!");
+        } else if (result == Result.COMPUTER_WIN) {
+            _helper.addAlert(event, "Player " + curPlayer + " wins!");
+        } else if (result == Result.DRAW) {
+            _helper.addAlert(event, "Game ended in a draw");
         }
 
-        // adjust the player and the number of moves
-        _player = _playerPlusMoves[0];
+        _currentPlayer = _playerPlusMoves[0];
         _moves = _playerPlusMoves[1];
+    }
+
+    @FXML
+    void bottomLeftPress(ActionEvent event) {
+        makeMove(event, bottomLeft, _currentPlayer, _moves);
     }
 
     @FXML
     void bottomMiddlePress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(bottomMiddle, _player, _moves);
-
-        String player = (_player == 1) ? "X" : "O";
-
-        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
-            _helper.addAlert(event, "Player " + _player + " wins!");
-        }
-
-        // adjust the player and the number of moves
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
+        makeMove(event, bottomMiddle, _currentPlayer, _moves);
     }
 
     @FXML
     void bottomRightPress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(bottomRight, _player, _moves);
-
-        String player = (_player == 1) ? "X" : "O";
-
-        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
-            _helper.addAlert(event, "Player " + _player + " wins!");
-        }
-
-        // adjust the player and the number of moves
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
+        makeMove(event, bottomRight, _currentPlayer, _moves);
     }
 
     @FXML
     void leftPress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(left, _player, _moves);
-
-        String player = (_player == 1) ? "X" : "O";
-
-        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
-            _helper.addAlert(event, "Player " + _player + " wins!");
-        }
-
-        // adjust the player and the number of moves
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
+        makeMove(event, left, _currentPlayer, _moves);
     }
 
     @FXML
     void middlePress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(middle, _player, _moves);
-
-        String player = (_player == 1) ? "X" : "O";
-
-        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
-            _helper.addAlert(event, "Player " + _player + " wins!");
-        }
-
-        // adjust the player and the number of moves
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
+        makeMove(event, middle, _currentPlayer, _moves);
     }
 
     @FXML
     void rightPress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(right, _player, _moves);
-
-        String player = (_player == 1) ? "X" : "O";
-
-        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
-            _helper.addAlert(event, "Player " + _player + " wins!");
-        }
-
-        // adjust the player and the number of moves
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
+        makeMove(event, right, _currentPlayer, _moves);
     }
 
     @FXML
     void topLeftPress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(topLeft, _player, _moves);
-
-        String player = (_player == 1) ? "X" : "O";
-
-        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
-            _helper.addAlert(event, "Player " + _player + " wins!");
-        }
-
-        // adjust the player and the number of moves
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
+        makeMove(event, topLeft, _currentPlayer, _moves);
     }
 
     @FXML
     void topMiddlePress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(topMiddle, _player, _moves);
-
-        String player = (_player == 1) ? "X" : "O";
-
-        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
-            _helper.addAlert(event, "Player " + _player + " wins!");
-        }
-
-        // adjust the player and the number of moves
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
+        makeMove(event, topMiddle, _currentPlayer, _moves);
     }
 
     @FXML
     void topRightPress(ActionEvent event) {
-        _playerPlusMoves = GameGridControl.buttonChange(topRight, _player, _moves);
-
-        String player = (_player == 1) ? "X" : "O";
-
-        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
-            _helper.addAlert(event, "Player " + _player + " wins!");
-        }
-
-        // adjust the player and the number of moves
-        _player = _playerPlusMoves[0];
-        _moves = _playerPlusMoves[1];
+        makeMove(event, topRight, _currentPlayer, _moves);
     }
 
     @FXML
@@ -199,13 +109,13 @@ public class Player implements Initializable {
         // reset all the buttons
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                board[i][j].setText("");
+                board[i][j].setText(" ");
                 board[i][j].setDisable(false);
             }
         }
 
         _moves = 0;
-        _player = 1;
+        _currentPlayer = 1;
     }
 
     @FXML

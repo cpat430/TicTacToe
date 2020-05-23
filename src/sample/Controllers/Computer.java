@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import sample.*;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,31 +18,22 @@ public class Computer implements Initializable {
     private ComputerLogic _logic;
 
     private int _player = 1;
-
+    final private String _computer = "O";
     private int _moves = 0;
 
     private int[] _playerPlusMoves = {};
 
     @FXML private Button topLeft;
-
     @FXML private Button topMiddle;
-
     @FXML private Button left;
-
     @FXML private Button bottomLeft;
-
     @FXML private Button middle;
-
     @FXML private Button bottomMiddle;
-
     @FXML private Button topRight;
-
     @FXML private Button right;
-
     @FXML private Button bottomRight;
 
     @FXML private Button restartButton;
-
     @FXML private Button mainMenuButton;
 
     private Button[][] board = new Button[3][3];
@@ -88,12 +80,12 @@ public class Computer implements Initializable {
 
         String player = (_player == 1) ? "X" : "O";
 
-        if (_logic.winning(board, player).equals((player.equals("X")) ? Result.PLAYER_WIN : Result.COMPUTER_WIN)) {
-            _helper.addAlert(event, "Player " + (3 - _player) + " wins!");
-        }
+        checkWin(player, event);
 
         // play the computer's move
         makeComputerMove(board);
+
+        checkWin(_computer, event);
     }
 
     @FXML
@@ -127,8 +119,6 @@ public class Computer implements Initializable {
         board[x][y].setText("O");
 
         _player = 1;
-
-//        return board;
     }
 
     @Override
@@ -152,6 +142,18 @@ public class Computer implements Initializable {
 
         this._logic = new ComputerLogic(board);
 
+    }
+
+    public void checkWin(String player, ActionEvent event) {
+        Result result = _logic.winning(board,player);
+
+        if (result == Result.PLAYER_WIN) {
+            _helper.addAlert(event, "You win!");
+        } else if (result == Result.COMPUTER_WIN) {
+            _helper.addAlert(event, "Computer wins! Try again next time");
+        } else if (result == Result.DRAW) {
+            _helper.addAlert(event, "Game ended in a draw");
+        }
     }
 
     public Button[][] getButtons() {
