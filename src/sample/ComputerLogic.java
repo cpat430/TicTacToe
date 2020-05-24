@@ -85,11 +85,11 @@ public class ComputerLogic {
             Button[][] testBoard = duplicateBoard(board);
 
             // get coord values
-            int x = coord.getI();
-            int y = coord.getJ();
+            int i = coord.getI();
+            int j = coord.getJ();
 
             // set the coord spot to the player
-            testBoard[x][y].setText(player);
+            testBoard[i][j].setText(player);
 
             // check if it is a winning move
             Move winningMove;

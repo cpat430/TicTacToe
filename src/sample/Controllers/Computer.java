@@ -40,16 +40,20 @@ public class Computer implements Initializable {
         // get the information from the event
         Button button = (Button) event.getSource();
 
+        // make the user's turn
         GameGridControl.computerButtonChange(button, _player);
 
+        // check if the user wins
         checkWin(_player, event);
 
         // play the computer's move
         makeComputerMove(board);
 
+        // check if the computer wins
         checkWin(_computer, event);
     }
 
+    // resets the board
     @FXML
     void restart(ActionEvent event) throws IOException {
 
@@ -62,6 +66,7 @@ public class Computer implements Initializable {
         }
     }
 
+    // method to return to the main menu
     @FXML
     void mainMenu(ActionEvent event) throws IOException {
         _helper.changeScene(event, "MainMenu.fxml");
@@ -69,13 +74,13 @@ public class Computer implements Initializable {
 
     private void makeComputerMove(Button[][] board) {
         // calculate the best move
-        Move bestMove = _logic.calculateBestMove(board, "O");
+        Move bestMove = _logic.calculateBestMove(board, _computer);
 
-        // get the x and y coordinates
-        int x = bestMove.getCoord().getI();
-        int y = bestMove.getCoord().getJ();
+        // get the i and j coordinates
+        int i = bestMove.getCoord().getI();
+        int j = bestMove.getCoord().getJ();
 
-        board[x][y].setText("O");
+        board[i][j].setText(_computer);
     }
 
     @Override

@@ -38,39 +38,26 @@ public class Player implements Initializable {
 
     private Button[][] board = new Button[3][3];
 
-//    void makeMove(ActionEvent event, Button button, int curPlayer) {
-//
-//        String player = (curPlayer == 1) ? "X" : "O";
-//
-//        GameGridControl.playerButtonChange(button, player);
-//
-//        Result result = _logic.winning(board,player);
-//
-//        if (result == Result.PLAYER_WIN || result == Result.COMPUTER_WIN) {
-//            _helper.addAlert(event, "Player " + curPlayer + " wins!");
-//        } else if (result == Result.DRAW) {
-//            _helper.addAlert(event, "Game ended in a draw");
-//        }
-//
-//        _currentPlayer = 3 - curPlayer;
-//    }
-
     @FXML
     void buttonPress(ActionEvent event) {
 
         // get the information from the event
         Button button = (Button) event.getSource();
 
+        // set the player string to the current player
         String player = (_currentPlayer == 1) ? _player1 : _player2;
 
+        // change the player button
         GameGridControl.playerButtonChange(button, player);
 
+        // check if this is a winning move
         checkWin(player, event);
 
+        // change the player (next person's turn)
         _currentPlayer = 3 - _currentPlayer;
-
     }
 
+    // restart button in case the user isn't happy with the game so far
     @FXML
     void restart(ActionEvent event) throws IOException {
 
@@ -85,11 +72,14 @@ public class Player implements Initializable {
         _currentPlayer = 1;
     }
 
+    // set the scene back to the main menu.
     @FXML
     void mainMenu(ActionEvent event) throws IOException {
         _helper.changeScene(event, "MainMenu.fxml");
     }
 
+    // Initialise the board with the buttons, set the button to empty string
+    // and adds the computer logic for checking winning.
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

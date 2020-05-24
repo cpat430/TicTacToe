@@ -2,13 +2,16 @@ package sample.Controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import sample.Helper;
 import sample.Main;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MainMenu {
+public class MainMenu implements Initializable {
 
     Helper _helper = Main.getHelper();
 
@@ -36,7 +39,7 @@ public class MainMenu {
 
     @FXML
     void toHelp(ActionEvent event) throws IOException {
-        _helper.changeScene(event, "Help.fxml");
+//        _helper.changeScene(event, "Help.fxml");
     }
 
     @FXML
@@ -44,5 +47,11 @@ public class MainMenu {
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        settingsButton.setDisable(true);
+        helpButton.setDisable(true);
+
+    }
 }
 
