@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="TicTacToe:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/TicTacToe_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/sample/Controllers/Computer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/sample/Controllers/Computer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/sample/Controllers/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/sample/Controllers/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/sample/Controllers/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/sample/Controllers/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/sample/ComputerLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/sample/ComputerLogic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TicTacToe/sample/GameGridControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TicTacToe/sample/GameGridControl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/ComputerLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/ComputerLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controllers/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/Computer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controllers/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Controllers/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controllers/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/GameGridControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/GameGridControl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,9 +119,13 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580687726070" />
     <property name="dynamic.classpath" value="false" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
   </component>
   <component name="RunManager">
@@ -218,25 +223,52 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="215" key="GridCell.Tab.0.bottom" timestamp="1590278662502">
+    <state x="184" y="101" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590301317424">
       <screen x="0" y="23" width="1440" height="833" />
     </state>
-    <state width="1398" height="215" key="GridCell.Tab.0.bottom/0.23.1440.833@0.23.1440.833" timestamp="1590278662502" />
-    <state width="1398" height="215" key="GridCell.Tab.0.center" timestamp="1590278662501">
+    <state x="184" y="101" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.833@0.23.1440.833" timestamp="1590301317424" />
+    <state x="458" y="237" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1590283941634">
       <screen x="0" y="23" width="1440" height="833" />
     </state>
-    <state width="1398" height="215" key="GridCell.Tab.0.center/0.23.1440.833@0.23.1440.833" timestamp="1590278662501" />
-    <state width="1398" height="215" key="GridCell.Tab.0.left" timestamp="1590278662500">
+    <state x="458" y="237" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1440.833@0.23.1440.833" timestamp="1590283941634" />
+    <state x="458" y="237" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1440.834@0.23.1440.834" timestamp="1590282715696" />
+    <state width="1398" height="215" key="GridCell.Tab.0.bottom" timestamp="1590355899999">
+      <screen x="0" y="23" width="1440" height="832" />
+    </state>
+    <state width="1398" height="215" key="GridCell.Tab.0.bottom/0.23.1440.832@0.23.1440.832" timestamp="1590355899999" />
+    <state width="1398" height="215" key="GridCell.Tab.0.bottom/0.23.1440.833@0.23.1440.833" timestamp="1590281937272" />
+    <state width="1398" height="215" key="GridCell.Tab.0.bottom/0.23.1440.834@0.23.1440.834" timestamp="1590282763902" />
+    <state width="1398" height="215" key="GridCell.Tab.0.center" timestamp="1590355899998">
+      <screen x="0" y="23" width="1440" height="832" />
+    </state>
+    <state width="1398" height="215" key="GridCell.Tab.0.center/0.23.1440.832@0.23.1440.832" timestamp="1590355899998" />
+    <state width="1398" height="215" key="GridCell.Tab.0.center/0.23.1440.833@0.23.1440.833" timestamp="1590281937271" />
+    <state width="1398" height="215" key="GridCell.Tab.0.center/0.23.1440.834@0.23.1440.834" timestamp="1590282763901" />
+    <state width="1398" height="215" key="GridCell.Tab.0.left" timestamp="1590355899998">
+      <screen x="0" y="23" width="1440" height="832" />
+    </state>
+    <state width="1398" height="215" key="GridCell.Tab.0.left/0.23.1440.832@0.23.1440.832" timestamp="1590355899998" />
+    <state width="1398" height="215" key="GridCell.Tab.0.left/0.23.1440.833@0.23.1440.833" timestamp="1590281937270" />
+    <state width="1398" height="215" key="GridCell.Tab.0.left/0.23.1440.834@0.23.1440.834" timestamp="1590282763900" />
+    <state width="1398" height="215" key="GridCell.Tab.0.right" timestamp="1590355899999">
+      <screen x="0" y="23" width="1440" height="832" />
+    </state>
+    <state width="1398" height="215" key="GridCell.Tab.0.right/0.23.1440.832@0.23.1440.832" timestamp="1590355899999" />
+    <state width="1398" height="215" key="GridCell.Tab.0.right/0.23.1440.833@0.23.1440.833" timestamp="1590281937271" />
+    <state width="1398" height="215" key="GridCell.Tab.0.right/0.23.1440.834@0.23.1440.834" timestamp="1590282763901" />
+    <state x="208" y="23" width="1024" height="833" key="SettingsEditor" timestamp="1590283954297">
       <screen x="0" y="23" width="1440" height="833" />
     </state>
-    <state width="1398" height="215" key="GridCell.Tab.0.left/0.23.1440.833@0.23.1440.833" timestamp="1590278662500" />
-    <state width="1398" height="215" key="GridCell.Tab.0.right" timestamp="1590278662501">
+    <state x="208" y="23" width="1024" height="833" key="SettingsEditor/0.23.1440.833@0.23.1440.833" timestamp="1590283954297" />
+    <state x="208" y="23" key="SettingsEditor/0.23.1440.834@0.23.1440.834" timestamp="1590282756010" />
+    <state x="114" y="61" key="new project wizard" timestamp="1590301847616">
       <screen x="0" y="23" width="1440" height="833" />
     </state>
-    <state width="1398" height="215" key="GridCell.Tab.0.right/0.23.1440.833@0.23.1440.833" timestamp="1590278662501" />
-    <state x="385" y="180" width="670" height="676" key="search.everywhere.popup" timestamp="1590267395414">
-      <screen x="0" y="23" width="1440" height="833" />
+    <state x="114" y="61" key="new project wizard/0.23.1440.833@0.23.1440.833" timestamp="1590301847616" />
+    <state x="385" y="180" width="670" height="676" key="search.everywhere.popup" timestamp="1590354968583">
+      <screen x="0" y="23" width="1440" height="832" />
     </state>
+    <state x="385" y="180" width="670" height="676" key="search.everywhere.popup/0.23.1440.832@0.23.1440.832" timestamp="1590354968583" />
     <state x="385" y="180" width="670" height="676" key="search.everywhere.popup/0.23.1440.833@0.23.1440.833" timestamp="1590267395414" />
   </component>
   <component name="antWorkspaceConfiguration">

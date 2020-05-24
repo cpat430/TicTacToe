@@ -44,13 +44,16 @@ public class Computer implements Initializable {
         GameGridControl.computerButtonChange(button, _player);
 
         // check if the user wins
-        checkWin(_player, event);
+        boolean win = checkWin(_player, event);
+
+        if (win) return;
 
         // play the computer's move
         makeComputerMove(board);
 
         // check if the computer wins
         checkWin(_computer, event);
+
     }
 
     // resets the board
@@ -105,7 +108,7 @@ public class Computer implements Initializable {
         this._logic = new ComputerLogic(board);
     }
 
-    public void checkWin(String player, ActionEvent event) {
+    public boolean checkWin(String player, ActionEvent event) {
         Result result = _logic.winning(board,player);
 
         if (result == Result.PLAYER_WIN) {
@@ -114,7 +117,11 @@ public class Computer implements Initializable {
             _helper.addAlert(event, "Computer wins! Try again next time", "Computer.fxml");
         } else if (result == Result.DRAW) {
             _helper.addAlert(event, "Game ended in a draw", "Computer.fxml");
+        } else {
+            return false;
         }
+
+        return true;
     }
 
     public Button[][] getButtons() {

@@ -2,9 +2,10 @@ package sample;
 
 
 import javafx.scene.control.Button;
-import sun.util.resources.cldr.bn.CalendarData_bn_IN;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 /**s
@@ -16,6 +17,8 @@ import java.util.Vector;
 public class ComputerLogic {
 
     private Helper _helper = Main.getHelper();
+
+    private Map<String,Move> dp = new HashMap<String,Move>();
 
     private Button[][] _allButtons;
 
@@ -79,6 +82,12 @@ public class ComputerLogic {
         Vector<Coordinate> availableSpots = getEmptyCoordinates(board);
         Vector<Move> availableMoves = new Vector<Move>();
 
+        String dpBoard = toString(board);
+
+        if (dp.containsKey(dpBoard)) {
+            return dp.get(dpBoard);
+        }
+
         // loop to go through all the available moves
         for (Coordinate coord : availableSpots) {
 
@@ -117,6 +126,7 @@ public class ComputerLogic {
 
                 // add the move to the vector containing all available moves
                 availableMoves.add(newMove);
+
             }
         }
 
@@ -126,11 +136,13 @@ public class ComputerLogic {
 
         // if the player is the player, return the best move for the player
         if (player.equals(_player)) {
-            return availableMoves.get(availableMoves.size()-1);
+            dp.put(dpBoard, availableMoves.get(availableMoves.size()-1));
+            return dp.get(dpBoard);
         }
 
         // if computer, return the best move for the computer.
-        return availableMoves.get(0);
+        dp.put(dpBoard, availableMoves.get(0));
+        return dp.get(dpBoard);
     }
 
     /**
@@ -162,5 +174,18 @@ public class ComputerLogic {
         }
 
         return Result.INCOMPLETE;
+    }
+
+    public String toString(Button[][] board) {
+
+        String out = "";
+
+        for (int i = 0; i < _boardSize; i++) {
+            for (int j = 0; j < _boardSize; j++) {
+                out += board[i][j].getText();
+            }
+        }
+
+        return out;
     }
 }
